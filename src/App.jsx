@@ -4,10 +4,9 @@ import quiz_questions from './questions.json'
 
 function App() {
   const [count, setCount] = useState(0)
-  console.log(JSON.stringify(quiz_questions))
+  console.log(quiz_questions)
   return (
     <>
-      
     </>
   )
 }
