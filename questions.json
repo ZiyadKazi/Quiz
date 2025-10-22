@@ -1,0 +1,127 @@
+{
+    "quizTitle": "React Quiz",
+    "quizDescription": "Test your knowledge of React fundamentals!",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is React primarily used for?",
+        "options": [
+          "Building mobile apps only",
+          "Managing databases",
+          "Building user interfaces",
+          "Creating server-side APIs"
+        ],
+        "correctAnswer": "Building user interfaces",
+        "explanation": "React is a JavaScript library used to build dynamic and interactive user interfaces."
+      },
+      {
+        "id": 2,
+        "question": "Who developed React?",
+        "options": [
+          "Google",
+          "Microsoft",
+          "Facebook",
+          "Amazon"
+        ],
+        "correctAnswer": "Facebook",
+        "explanation": "React was developed by Facebook (now Meta) and is maintained by Meta along with the open-source community."
+      },
+      {
+        "id": 3,
+        "question": "What is a React component?",
+        "options": [
+          "A reusable piece of UI",
+          "A database model",
+          "A CSS style file",
+          "A JavaScript variable"
+        ],
+        "correctAnswer": "A reusable piece of UI",
+        "explanation": "Components are reusable, self-contained building blocks for React applications."
+      },
+      {
+        "id": 4,
+        "question": "What is JSX?",
+        "options": [
+          "A JavaScript extension that allows writing HTML inside JavaScript",
+          "A type of JSON file",
+          "A new CSS framework",
+          "A data format used by React"
+        ],
+        "correctAnswer": "A JavaScript extension that allows writing HTML inside JavaScript",
+        "explanation": "JSX stands for JavaScript XML. It allows developers to write HTML-like syntax directly in JavaScript."
+      },
+      {
+        "id": 5,
+        "question": "Which method is used to create components in React?",
+        "options": [
+          "createComponent()",
+          "React.createElement()",
+          "new Component()",
+          "Component.make()"
+        ],
+        "correctAnswer": "React.createElement()",
+        "explanation": "Under the hood, JSX is transformed into React.createElement() calls."
+      },
+      {
+        "id": 6,
+        "question": "What is the purpose of 'useState' in React?",
+        "options": [
+          "To store and manage component state",
+          "To fetch data from an API",
+          "To define routes",
+          "To style components"
+        ],
+        "correctAnswer": "To store and manage component state",
+        "explanation": "The useState hook allows functional components to hold and update local state."
+      },
+      {
+        "id": 7,
+        "question": "What does the virtual DOM do in React?",
+        "options": [
+          "Improves database performance",
+          "Minimizes direct DOM manipulation for faster updates",
+          "Stores user data",
+          "Handles routing between pages"
+        ],
+        "correctAnswer": "Minimizes direct DOM manipulation for faster updates",
+        "explanation": "React’s virtual DOM optimizes updates by minimizing costly direct interactions with the real DOM."
+      },
+      {
+        "id": 8,
+        "question": "How do you pass data from a parent component to a child component?",
+        "options": [
+          "Using state",
+          "Using props",
+          "Using events",
+          "Using context"
+        ],
+        "correctAnswer": "Using props",
+        "explanation": "Props (short for properties) are used to pass data from parent to child components."
+      },
+      {
+        "id": 9,
+        "question": "Which hook is used to perform side effects in a component?",
+        "options": [
+          "useState",
+          "useEffect",
+          "useContext",
+          "useRef"
+        ],
+        "correctAnswer": "useEffect",
+        "explanation": "The useEffect hook lets you perform side effects such as fetching data or manipulating the DOM."
+      },
+      {
+        "id": 10,
+        "question": "What command is used to start a React project with Create React App?",
+        "options": [
+          "npm start-react",
+          "npx create-react-app my-app",
+          "npm run react-init",
+          "node react-create"
+        ],
+        "correctAnswer": "npx create-react-app my-app",
+        "explanation": "The npx create-react-app command sets up a new React project with all necessary configurations."
+      }
+    ]
+  } 
+  
