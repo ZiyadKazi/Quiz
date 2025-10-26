@@ -14,29 +14,23 @@ function App() {
     <>
       <div className = "main-content">
         <h1>{quiz_questions["quizTitle"]}</h1>
+        <p>Question Number: {idx+1} out of {quiz_questions["questions"].length}</p>
           <div className = "quiz-content">
             <div className = "previous">
-            <FaAngleLeft/>
+            <FaAngleLeft className = "icon"/>
             </div>
             <div className = "question-info"> 
               <h2>{quiz_questions["questions"][idx]["question"]}</h2>
-              <ul>
-                <li>
-                  {quiz_questions["questions"][idx]["options"][0]}
-                </li>
-                <li>
-                  {quiz_questions["questions"][idx]["options"][1]}
-                </li>
-                <li>
-                  {quiz_questions["questions"][idx]["options"][2]}
-                </li>
-                <li>
-                  {quiz_questions["questions"][idx]["options"][3]}
-                </li>
+              <ul className = "options-box">
+                {quiz_questions["questions"][idx]["options"].map(
+                  option => (
+                    <li className = "quiz-options">{option}</li>
+                  )
+                )}
               </ul>
             </div>
 
-            <FaAngleRight/>
+            <FaAngleRight className = "icon"/>
             
           </div>
       </div>
