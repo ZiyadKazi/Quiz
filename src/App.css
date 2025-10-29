@@ -55,3 +55,7 @@
 .icon {
   font-size: 2rem;
 }
+
+.icon-button:disabled {
+  color: green;
+}
