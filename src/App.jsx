@@ -7,31 +7,54 @@ function App() {
   const [idx, setIdx] = useState(0)
   const [isDisabledLeft, setIsDisabledLeft] = useState(true)
   const [isDisabledRight, setIsDisabledRight] = useState(false)
+  const [showSubmitButton, setShowSubmitButton] = useState(false)
+  const [isCorrectArray, setIsCorrectArray] = useState(Array(quiz_questions["questions"].length).fill(false))
   console.log(quiz_questions)
   console.log(quiz_questions["questions"][6]["question"])
   console.log(quiz_questions["quizTitle"])
 
   const moveLeft = () => {
     if (idx > 0) {
-      setIdx(idx - 1)
-    }
-    if (idx <= 0) {
-      setIsDisabledLeft(true)
-    } else {
-      setIsDisabledLeft(false)
+      setIdx(prevIdx => {
+        const newIdx = prevIdx - 1
+        // if (newIdx == 0) {
+        //   setIsDisabledLeft(true)
+        // } else {
+        //   setIsDisabledLeft(false)
+        // }
+
+        // fun myFunc(num) {}
+
+        // myFunc(10)  
+
+        setIsDisabledLeft(newIdx == 0)
+        setIsDisabledRight(newIdx == quiz_questions["questions"].length-1)
+        setShowSubmitButton(newIdx == quiz_questions["questions"].length-1)
+        return newIdx 
+      })
     }
   }
 
   const moveRight = () => {
     if (idx < quiz_questions["questions"].length-1) {
-      setIdx(idx + 1)
-    }
-    if (idx <= 0) {
-      setIsDisabledLeft(true)
-    } else {
-      setIsDisabledLeft(false)
+      setIdx(prevIdx => {
+        const newIdx = prevIdx + 1
+        setIsDisabledLeft(newIdx == 0)
+        setIsDisabledRight(newIdx == quiz_questions["questions"].length-1)
+        setShowSubmitButton(newIdx == quiz_questions["questions"].length-1)
+        return newIdx
+      })
     }
   }
+
+  const isCorrect = (option) => {
+    console.log(option)
+    if (option == quiz_questions["questions"][idx]["correctAnswer"]) {
+      console.log("You are correct!")
+    }
+  }
+
+  const handleSubmit = () => {}
   
 
   return (
@@ -48,8 +71,8 @@ function App() {
               <h2>{quiz_questions["questions"][idx]["question"]}</h2>
               <ul className = "options-box">
                 {quiz_questions["questions"][idx]["options"].map(
-                  option => (
-                    <li className = "quiz-options">{option}</li>
+                  (option, optionID) => (
+                    <li key = {optionID} onClick={() => isCorrect(option)} className = "quiz-options">{option}</li>
                   )
                 )}
               </ul>
@@ -60,6 +83,9 @@ function App() {
           </button>
             
           </div>
+          {showSubmitButton && (
+            <button className="submit-button" onClick = {handleSubmit}> Submit </button>
+          )}
       </div>
     </>
   )
