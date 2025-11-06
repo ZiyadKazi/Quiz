@@ -9,6 +9,7 @@ function App() {
   const [isDisabledRight, setIsDisabledRight] = useState(false)
   const [showSubmitButton, setShowSubmitButton] = useState(false)
   const [isCorrectArray, setIsCorrectArray] = useState(Array(quiz_questions["questions"].length).fill(false))
+  const [selectedOptionArray, setSelectedOptionArray] = useState(Array(quiz_questions["questions"].length).fill(-1))
   console.log(quiz_questions)
   console.log(quiz_questions["questions"][6]["question"])
   console.log(quiz_questions["quizTitle"])
@@ -17,15 +18,6 @@ function App() {
     if (idx > 0) {
       setIdx(prevIdx => {
         const newIdx = prevIdx - 1
-        // if (newIdx == 0) {
-        //   setIsDisabledLeft(true)
-        // } else {
-        //   setIsDisabledLeft(false)
-        // }
-
-        // fun myFunc(num) {}
-
-        // myFunc(10)  
 
         setIsDisabledLeft(newIdx == 0)
         setIsDisabledRight(newIdx == quiz_questions["questions"].length-1)
@@ -47,10 +39,37 @@ function App() {
     }
   }
 
-  const isCorrect = (option) => {
+  const isCorrect = (option, optionID) => {
     console.log(option)
-    if (option == quiz_questions["questions"][idx]["correctAnswer"]) {
+    setSelectedOptionArray(
+      prevArray => {
+        const newArray = [...prevArray]
+        newArray[idx] = optionID
+        console.log(newArray)
+        return newArray
+      }
+    )
+    if (option === quiz_questions["questions"][idx]["correctAnswer"]) {
       console.log("You are correct!")
+      setIsCorrectArray(
+        //isCorrectArray[idx] = true  unappropriate way, cannot change values directly in useState array
+        prevArray => {
+          const newArray = [...prevArray]
+          newArray[idx] = true
+          console.log(newArray)
+          return newArray
+        }
+      )
+    }
+    else {
+      setIsCorrectArray(
+        prevArray => {
+          const newArray = [...prevArray]
+          newArray[idx] = false
+          console.log(newArray)
+          return newArray
+        }
+      )
     }
   }
 
@@ -71,9 +90,14 @@ function App() {
               <h2>{quiz_questions["questions"][idx]["question"]}</h2>
               <ul className = "options-box">
                 {quiz_questions["questions"][idx]["options"].map(
-                  (option, optionID) => (
-                    <li key = {optionID} onClick={() => isCorrect(option)} className = "quiz-options">{option}</li>
-                  )
+                  (option, optionID) => {
+                    let className = "quiz-options"
+                    if (optionID === selectedOptionArray[idx]) {
+                      console.log("Selected option index" + {optionID})
+                      className = className + " selected"
+                    }
+                    return (<li key = {optionID} onClick={() => isCorrect(option, optionID)} className = {className}>{option}</li>)
+                  }
                 )}
               </ul>
             </div>
