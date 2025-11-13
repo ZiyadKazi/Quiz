@@ -53,7 +53,8 @@
 }
 
 .quiz-options.selected {
-  background-color:beige;
+  background-color: white;
+  color: #4a5568;
 }
 
 .icon {

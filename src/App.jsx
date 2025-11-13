@@ -3,6 +3,8 @@ import './App.css'
 import quiz_questions from '../questions.json'
 import { FaAngleLeft } from 'react-icons/fa';
 import { FaAngleRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
 function App() {
   const [idx, setIdx] = useState(0)
   const [isDisabledLeft, setIsDisabledLeft] = useState(true)
@@ -73,7 +75,16 @@ function App() {
     }
   }
 
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    let amountCorrect = 0
+    isCorrectArray.forEach(answer => {
+      if (answer == true) {
+        amountCorrect += 1
+      }
+    })
+    console.log(amountCorrect)
+    return amountCorrect
+  }
   
 
   return (
@@ -108,7 +119,9 @@ function App() {
             
           </div>
           {showSubmitButton && (
-            <button className="submit-button" onClick = {handleSubmit}> Submit </button>
+            <Link to="/submission">
+              <button className="submit-button" onClick = {handleSubmit}> Submit </button>
+            </Link>
           )}
       </div>
     </>
