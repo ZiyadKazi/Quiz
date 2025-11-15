@@ -83,6 +83,9 @@ function App() {
       }
     })
     console.log(amountCorrect)
+    localStorage.setItem("result", amountCorrect)
+    localStorage.setItem("correctArray", JSON.stringify(isCorrectArray))
+    //localStorage.setItem("selectedOptionArray", JSON.stringify(selectedOptionArray))
     return amountCorrect
   }
   
